@@ -5,48 +5,43 @@
 {% block body %}
 <div class="container" >
     <br>
+    <div class="container">
     <h1 class="display-5 text-info  text-center">Mon Agence Immobilière</h1>
     <br>
+    </div>
     <article class="display-8 text-dark padding-left:25">
         <strong>Une équipe à votre écoute !<br></strong>
         <p>Créée en 2000, Mon Agence immobilière vous accompagne sur l’ensemble de vos projets immobiliers en mettant à votre disposition une équipe de professionnels compétents.</p>
-        <strong>Nos domaines d’intervention :<br></strong>
-        <ul class="list-group">
-        <li class="list-group-item">- Location,</li>
-        <li class="list-group-item">- Gestion locative (Garantie Loyers Impayés, Garantie détériorations Immobilières et protection juridique)</li>
-        <li class="list-group-item">- Transaction : ancien, neuf, terrains et fonds de commerce</li>
-        </ul>
-        <br>
         <strong>Notre philosophie est de placer l’humain au cœur de nos priorités qu’il s’agisse des propriétaires, des locataires ou des acquéreurs qui nous font confiance.</strong>
         <p>Parce que nous croyons que l’accompagnement personnalisé est essentiel, Mon Agence Immobilière veut apporter une solution sur mesure à tous ses clients.</p>
-        
-        <strong class="text-info">Un réseau puissant !</strong>
-        <p>Nous avons choisi d’être partenaire du groupement <strong>IMMOBIENS</STRONG> qui partage ces valeurs et offre à l’agence? les outils et les moyens permettant de vous proposer des services de qualité.
+       
+        <strong>Nos domaines d’intervention :<br></strong>
+        <ul>
+            <li>Location,</li>
+            <li>Gestion locative (Garantie Loyers Impayés, Garantie détériorations Immobilières et protection juridique)</li>
+            <li>Transaction : ancien, neuf, terrains et fonds de commerce</li>
+        </ul>
+                        
+        <strong class="text-inf, fst-italic">Un réseau puissant !</strong>
+        <p>Nous avons choisi d’être partenaire du groupement <strong>Immobiens</STRONG> qui partage ces valeurs et offre à l’agence? les outils et les moyens permettant de vous proposer des services de qualité.
         Le virtuel c’est bien, le contact humain c’est essentiel !
-        <p>Au-delà de ce nouveau site que nous avons le plaisir de vous présenter, nous restons convaincus que notre métier est avant tout un métier de relation humaine et d’échange, c’est pourquoi nous vous invitons à venir nous rencontrer à l’agence:
+        <p>Vous pouvez nous joindre
         <strong>du lundi au vendredi de 9h à 12h et de 14h à 18h</strong>
          pour évoquer d’une manière simple et conviviale vos projets de vie et d’avenir autour de l’habitat et trouver ensemble les solutions les plus adaptées.</p>
-        <strong class="text-info, fst-italic">L’équipe de Mon Agence Immobilière</strong>
+        <strong class="text-info">L’équipe de Mon Agence Immobilière</strong>
     </article>
 </div>
  <br>
 
-<div class="container">
+<div class="container mt-4">
     <h2>Les derniers biens</h2>
     <div class="row flex">
         {% for property in properties %}
-            <div class="col-3">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="clard-title">
-                            <a href="{{ path('property.show', {id:property.id, slug: property.slug}) }}">{{ property.title }}</a>
-                        </h5>
-                        <p class="card-text">{{ property.city }} ({{ property.postalCode }})</p>
-                        <div class="text-primary" style="font-weight:bold;font-size:2rem;">{{ property.formattedPrice}} €</div>
-                    </div>
-                </div>    
+            <div class="col-3">            
+            {% include 'property/_property.html.twig' %}  
             </div>
         {% endfor %}
+        
     </div>
 </div>
 {% endblock %}

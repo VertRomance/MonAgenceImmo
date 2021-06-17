@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <div class="" style="vertical-align:top;width:100%;">
+            <p>
+            <h1><u>Demande de contact pour le bien:</u> {{ contact.property.title }}</h1>   
+             
+    </div>
+</head>
+
+<tbody>
+<table align="center" border="0" cellpadding="15" cellspacing="0" class="" width="600">
+            <td class="" style="vertical-align:top;width:300px;font-size:1.2rem">
+        <div class="mj-column-per-100 outlook-group-fix">
+            <table border="0" cellpadding="5" cellspacing="0" role="presentation" width="100%">
+                <tr>
+                <td align="center">
+                <tr>
+                    Une nouvelle personne souhaiterait obtenir plus d'informations à propos de ce bien :
+                    <td align="center"><a href="{{ url('property.show', {id: contact.property.id, slug:contact.property.slug}) }}">{{ contact.property.title }}</a></td> 
+                </tr>
+
+                <table cellpadding="0" cellspacing="2" width="500" height="200" border="4" style="table-layout:fixed;">
+                    <tr>
+                    <th align="left" bgcolor="silver">Prénom:</th>
+                    <td>{{ contact.firstname }}</td>
+                    </tr>
+                    <tr>
+                    <th align="left" bgcolor="silver">Nom:</th>
+                    <td>{{ contact.lastname }}</td>
+                    </tr>
+                    <tr>
+                    <th align="left" bgcolor="silver">Téléphone:</th>
+                    <td>{{ contact.phone }}</td>
+                    </tr>
+                    <tr>
+                    <th align="left" bgcolor="silver">Email:</th>
+                    <td>{{ contact.email }}</td>
+                    </tr>
+                    <tr>
+                    <th align="left" bgcolor="silver">Message:</th>
+                    <td >{{ contact.message | nl2br }}</td>
+                    </tr>
+                </table>
+                </td>
+                </tr>
+            </table>
+        </div>
+            </td>
+            </tr>
+            </table>
+        </td>
+        </tr>
+</tbody>
+ </html>

@@ -1,4 +1,11 @@
-<div class="card mb-4">
+<div class="card mb-3">
+    {% if property.picture %}
+    <img class="card-img-top" src="{{ vich_uploader_asset(property.picture, 'imageFile') | imagine_filter('thumb') }}"
+     alt="Card image cap">
+    {% else %}
+    <img class="card-img-top" src="/images/logo.jpg" alt="Card image cap">
+    {% endif %}
+
     <div class="card-body">
         <h5 class="card-title">
             <a href="{{ path('property.show', {slug:property.slug, id:property.id}) }}">
@@ -7,7 +14,7 @@
         </h5>
         
         <p class="card-text">{{property.surface }} m2 -  {{property.city }} ({{property.postalCode}})</p>
-        <div class="text-primary" style="font-size:2rem; font-weight:bold;">
+        <div class="text-info" style="font-size:2rem; font-weight:bold;">
             {{property.formattedPrice}} €
         </div>
     </div>

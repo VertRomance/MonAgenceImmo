@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use Faker\Factory;
 use App\Entity\Property;
+use DateTime;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 
@@ -28,7 +29,9 @@ class PropertyFixture extends Fixture
             ->setCity($faker->city)
             ->setAdress($faker->address)
             ->setPostalCode($faker->postcode)
-            ->setSold(false);
+            ->setSold(false)
+            ->setUpdatedAt(new DateTime())
+            ->setFileName('');
 
         $manager->persist($property);
        }

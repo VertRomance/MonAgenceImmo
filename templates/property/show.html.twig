@@ -5,23 +5,62 @@
 {% block body %}
 <div class="bg-light">
     <div class="container">
+
+    {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+    {% if not form.vars.valid %}
+            <div class="alert alert-danger">
+                Votre formulaire n'est pas valide
+            </div>
+        {% endif %}
+
         <div class='row'>
                 <div class='col-md-8'>
+                    {% if property.filename %}
+                        <img src="{{ vich_uploader_asset(property, 'imageFile') | imagine_filter('medium') }}"
+                         alt="card-img-top" style="width:100%;height:auto">
+                        {% else %}
+                        <img src="/images/logo.jpg" alt="card-img-top" style="width:100%;height:auto">
+                    {% endif %}
+
 
                 </div>
                 <div class='col-md-4'>
                     <h1>{{ property.title }}</h1>
                     <h2>{{ property.rooms }} pièces - {{ property.surface }} m2</h2>
-                    <div class="text-primary" style="font-size:4rem;font-weight:bold;">{{ property.formattedPrice}} €</div>
-                    <a href="#" class="btn btn-primary">Contacter l'agence</a>
+                    <div class="text-info" style="font-size:3rem;font-weight:bold;">{{ property.formattedPrice}} €</div>
+                    <a href="#" class="btn btn-info text-white" id="contactButton"{% if form.vars.submitted %}style="display:none;" 
+                    {% endif %}>Contacter l'agence</a>
+                    
+                    <div id="contactForm" class='mt-4'{% if not form.vars.submitted %}style="display:none;" {% endif %}>
+                        {{ form_start(form)}}
+                        <div class="row">
+                            <div class="col">{{ form_row(form.firstname) }}</div>
+                            <div class="col">{{ form_row(form.lastname) }}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col">{{ form_row(form.phone) }}</div>
+                            <div class="col">{{ form_row(form.email) }}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col">{{ form_row(form.message) }}</div>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <button class="btn btn-info">Envoyer</button>
+                        </div>
+                        {{ form_end(form)}}
+                    </div>
                 </div>
         </div>
     </div>
 </div>   
     <div class='container' mt-4>
-        
-            {# <nav class="nav nav-tabs" id="tab"></nav>     #}
-
+    
         <p>
             {{ property.description | nl2br}}
         </p>
@@ -54,6 +93,11 @@
             </div>  
             <div class='col-md-4'>
                 <h2>Spécificités</h2>
+                <ul class="list-group">
+                    {% for option in property.options %}
+                    <li class="list-group-item">{{option.name}}</li>
+                    {% endfor %}
+                </ul>
             </div>  
         </div>   
     </div>
