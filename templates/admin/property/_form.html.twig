@@ -27,25 +27,19 @@
     <div class="row">
         <div class="col-md-2">{{ form_row(form.rooms) }}</div>
         <div class="col-md-2">{{ form_row(form.bedrooms) }}</div>
-        <div class="col-md-3">{{ form_row(form.heat) }}</div>
+        <div class="col-md-2">{{ form_row(form.heat) }}</div>
         <div class="col-md-2">{{ form_row(form.floor) }}</div>
     </div>
-
      <div class="row">
-        <div class="col-md-6">{{ form_row(form.pictureFiles) }}</div>
-      </div>
-
+        <div class="col-md-10">{{ form_row(form.pictureFiles) }}</div>
+        <div class="col-md-2">{{ form_row(form.sold) }}</div>
+      </div>    
     <div class="row">
-        <div class="col-md-4">{{ form_row(form.adress) }}</div>
-        <div class="col-md-4">{{ form_row(form.city) }}</div>
-        <div class="col-md-2">{{ form_row(form.postal_code) }}</div>
+        <div class="col-md-9">{{ form_row(form.adress) }}</div>
+        <div class="col-md-2">{{ form_row(form.city) }}</div>
+        <div class="col-md-1">{{ form_row(form.postal_code) }}</div>
     </div>
-    
-     <div class="row">
-        <div class="col-md-1">{{ form_row(form.sold) }}</div>
-    </div>
-
-        {{form_rest(form) }}
+    {{form_rest(form) }}
     <button class="btn btn-info text-white">{{button|default('Enregistrer') }}</button>
-        
+       
     {{ form_end(form) }}
